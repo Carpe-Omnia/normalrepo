@@ -1,0 +1,12 @@
+<h3> Create a new joke </h3>
+
+<%= form_for(@joke) do |f| %> 
+	<label>Set up </label>
+	<%= f.text_field :setup %> <br>
+	<label> Punchline </label>
+	<%= f.text_field :punchline %> <br>
+	<%= f.submit %> 
+<% end %> 
+	
+	
+	

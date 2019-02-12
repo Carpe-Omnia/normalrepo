@@ -1,4 +1,6 @@
-<h3> this is the jokes section </h3> 
+<%= @message %> 
+<h3> This is the jokes section </h3> 
+<h5> Tap or click on the dotted line to reveal the punchline </h5> 
 <ul>
 <% @jokes.each do |joke| %>
 <li>
@@ -11,6 +13,7 @@
 	<div class="punchline" id="<%="punchline#{joke.id}"%>">
 		<%= joke.punchline %> 
 	</div>	
+	by <%= joke.author.name %> 
 </li> 
 <br>
 <% end %> 

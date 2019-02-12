@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 	def create 
 		@user = User.new(user_params(:email, :name, :password) )
 		if @user.save 
+			@user.update(karma: 0)
 			session[:user_id] = @user.id 
 			redirect_to user_path(@user)
 		else 
