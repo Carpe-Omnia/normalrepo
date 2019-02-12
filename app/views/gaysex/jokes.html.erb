@@ -1,0 +1,10 @@
+<h3> this is the jokes section </h3> 
+<ul>
+<% @jokes.each do |joke| %>
+<li>
+<%= joke.setup %> 
+-- 
+<%= joke.punchline %> 
+</li> 
+<% end %> 
+</ul> 
