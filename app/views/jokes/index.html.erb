@@ -13,7 +13,10 @@
 	<div class="punchline" id="<%="punchline#{joke.id}"%>">
 		<%= joke.punchline %> 
 	</div>	
-	by <%= joke.author.name %> 
+	by
+	<a href="<%=user_path(joke.author)%>" >
+	<%= joke.author.name %> 
+	</a>
 </li> 
 <br>
 <% end %> 
