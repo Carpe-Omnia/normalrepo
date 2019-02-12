@@ -1,0 +1,12 @@
+<a href="/" > Home </a>
+<span class="spacer" >----</span>
+<% if session[:user_id] == nil %> 
+	<a href="/login" > Login </a>
+	<span class="spacer" >----</span>
+	<a href="/register" > Register </a>
+<% else %> 	
+	<a href="/logout" > Logout </a>
+<% end %> 	
+<span class="spacer" >----</span>
+<a href="/jokes" > Jokes </a>
+

@@ -5,16 +5,21 @@
 	<div class="setup" id="<%=joke.id%>" onclick="revealPunchline(<%=joke.id%>)">
 		<%= joke.setup %> 
 	</div>
-	-- 
+	<div class="placeholder" id="<%="placeholder#{joke.id}"%>" onclick="revealPunchline(<%=joke.id%>)">
+	-------------
+	</div>
 	<div class="punchline" id="<%="punchline#{joke.id}"%>">
 		<%= joke.punchline %> 
 	</div>	
 </li> 
+<br>
 <% end %> 
 </ul> 
 <script>
 	function revealPunchline(id) {
+		var placeId = `placeholder${id}` ;
 		var punchId = `punchline${id}`  ;
+		document.getElementById(`${placeId}`).style.display = "none" ;
 		document.getElementById(`${punchId}`).style.display = "block" ;
 	}
 </script>

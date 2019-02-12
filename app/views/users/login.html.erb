@@ -1,0 +1,12 @@
+<%= @message %> 
+
+
+<form action='/login' method='post' > 
+Username:
+<input type="text" name="name"><br>
+Password:
+<input type="text" name="password"><br>
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+Log in 
+<input type="submit" >
+</form>
