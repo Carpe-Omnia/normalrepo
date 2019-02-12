@@ -5,4 +5,19 @@
 <h4>
 Karma: <%= @user.karma %> 
 </h4>
+<% if session[:user_id] == @user.id %>
+	Bio:
+	<%= form_for(@bio) do |f| %> 
+	<label> Headline</label>
+	<%= f.text_field :headline %> <br>
+	<label> Content</label>
+	<%= f.text_area :content %> <br>
+	<%= f.submit %> 
+	<% end %> 
+<% else %>
+	Bio:
+	<%= @bio.headline %><br>
+	<%= @bio.content %> 
+<% end %> 
+	
 

@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 		if @user.save 
 			@user.update(karma: 0)
 			session[:user_id] = @user.id 
+			@bio = Bio.create(user_id: @user.id)
 			redirect_to user_path(@user)
 		else 
 			render "new" 
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
 	
 	def show 
 		@user = User.find_by(id: params[:id]) 
+		@user.bio == nil ? @bio = Bio.new(user_id: @user.id) : @bio = @user.bio	
 	end 
 	
 	def login 

@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   get '/jokes/new', to: 'jokes#new' 
   post '/jokes', to: 'jokes#create' 
   
+  post '/bio', to: 'bios#create' 
+  patch '/bio.:id', to: 'bios#update'
 end
