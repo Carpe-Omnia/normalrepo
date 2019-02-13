@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   get '/messages', to: 'jokes#index'
   post '/messages', to: 'messages#create' 
   get '/inbox', to: 'messages#inbox' 
+  
 end

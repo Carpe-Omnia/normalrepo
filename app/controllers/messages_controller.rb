@@ -20,4 +20,5 @@ class MessagesController < ApplicationController
 	def inbox 
 		@inbox = User.find_by(id: session[:user_id]).inbox 
 	end 
+	
 end 
