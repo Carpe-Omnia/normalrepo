@@ -17,4 +17,9 @@ Rails.application.routes.draw do
   
   post '/bio', to: 'bios#create' 
   patch '/bio.:id', to: 'bios#update'
+  
+  get '/messages/new', to: 'messages#new' 
+  get '/messages', to: 'jokes#index'
+  post '/messages', to: 'messages#create' 
+  get '/inbox', to: 'messages#inbox' 
 end

@@ -1,7 +1,11 @@
 <h3> This is the homepage for gaysex.biz </h3> 
-<% if session[:user_id] != nil %>
+<% if !!session[:user_id]  %>
 	<% @current_user = User.find_by(id: session[:user_id]) %> 
-	<%= "Greetings #{@current_user.name}." %> 
+	<% if !!@current_user %>
+		<%= "Greetings #{@current_user.name}." %> 
+	<% else %> 
+		<% session.clear %> 
+	<% end %> 	
 <% end %> 
 	
 

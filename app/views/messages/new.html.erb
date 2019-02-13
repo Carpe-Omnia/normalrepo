@@ -1,0 +1,9 @@
+Send a message to <%=@target.name%> 
+
+<form action="/messages" method="post" > 
+<input type="text" name="subject"><br>
+<input type="text" name="content"><br>
+<input type="hidden" name="to_id" value="<%=@target.inbox.id%>">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<input type="submit" value="send">	
+</form>

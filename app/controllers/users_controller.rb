@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 			@user.update(karma: 0)
 			session[:user_id] = @user.id 
 			@bio = Bio.create(user_id: @user.id)
+			@inbox = Inbox.create(user_id: @user.id) 
 			redirect_to user_path(@user)
 		else 
 			render "new" 

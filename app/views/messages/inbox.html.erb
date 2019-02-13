@@ -1,0 +1,10 @@
+Inbox 
+<ul>
+<% @inbox.messages.each do |message| %> 
+<li>
+<%= message.subject %> 
+<%= message.content %> 
+from
+<%= message.author.name %> 
+</li>
+<% end %> 

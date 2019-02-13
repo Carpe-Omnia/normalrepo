@@ -15,9 +15,24 @@ Karma: <%= @user.karma %>
 	<%= f.submit %> 
 	<% end %> 
 <% else %>
+	<% if session[:user_id] != nil %>
+		<form action="/messages/new" method="get" >
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<input type="hidden" name="to" value="<%=@user.id%>" > 
+		<input type="submit" value="message this user" > 
+		</form>
+		<br>
+		<% if !!@confirmation %> 
+			<h3> <%= @confirmation %> </h3>
+		<% end %> 	
+	<% end %> 	
 	Bio:
-	<%= @bio.headline %><br>
-	<%= @bio.content %> 
+	<% if !!@bio %>
+		<%= @bio.headline %><br>
+		<%= @bio.content %> 
+	<% else %> 
+		<%= "their bio is blank" %> 
+	<% end %> 	
 <% end %> 
 	
 
