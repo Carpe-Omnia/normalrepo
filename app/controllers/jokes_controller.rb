@@ -8,6 +8,7 @@ class JokesController < ApplicationController
 			@joke = Joke.new 
 		else 
 			@message = "You must be signed in to create a joke"
+			@jokes = Joke.all
 			render "index"
 		end 	
 	end 

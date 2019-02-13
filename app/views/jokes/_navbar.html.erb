@@ -1,19 +1,20 @@
-<a href="/" > Home </a>
+<ul class="navbar-nav mr-auto mt-2">
+<li> <a class="nav-link" href="/" > Home </a> </li>
 <span class="spacer" >----</span>
 <% if session[:user_id] == nil %> 
-	<a href="/login" > Login </a>
+	<li> <a class="nav-link" href="/login" > Login </a> </li>
 	<span class="spacer" >----</span>
-	<a href="/register" > Register </a>
+	<li> <a class="nav-link" href="/register" > Register </a> </li>
 <% else %> 	
-	<a href="/logout" > Logout </a>
+	<li> <a class="nav-link" href="/logout" > Logout </a> </li>
 	<span class="spacer" >----</span>
-	<a href="/inbox" > Inbox </a> 
+	<li> <a class="nav-link" href="/inbox" > Inbox </a> </li>
 <% end %> 	
 <span class="spacer" >----</span>
-<a href="/jokes" > Jokes </a>
+<li> <a class="nav-link" href="/jokes" > Jokes </a> </li>
 <span class="spacer" >----</span>
-<a href="/jokes/new" > Submit a joke </a>
+<li> <a class="nav-link" href="/jokes/new" > Submit a joke </a> </li>
 <span class="spacer" >----</span>
-<a href="/founder" > Founder </a> 
+<li> <a class="nav-link" href="/founder" > Founder </a> </li>
 <br>
-
+</ul> 
