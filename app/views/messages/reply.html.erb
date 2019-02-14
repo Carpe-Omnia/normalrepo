@@ -1,9 +1,0 @@
-Reply to that conversation:
-
-<form action="/reply" method="post" > 
-<input type="text" name="subject"><br>
-<input type="text" name="content"><br>
-<input type="hidden" name="to_id" value="<%=@target.id%>">
-<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-<input type="submit" value="send">	
-</form>

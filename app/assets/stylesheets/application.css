@@ -36,3 +36,9 @@ html {
 body {
 	background-image: url("vertical3.jpg")  ;
 }
+.hide-form { 
+display : none 
+} 
+.vis-form { 
+display: block 
+}

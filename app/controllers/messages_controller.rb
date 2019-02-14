@@ -24,11 +24,6 @@ class MessagesController < ApplicationController
 		@inbox = User.find_by(id: session[:user_id]).inbox 
 	end 
 	
-	def reply 
-		@sender = User.find_by(id: session[:user_id]) 
-		@target = User.find_by(id: params[:to])
-	end 
-	
 	def sendreply 
 		sender = User.find_by(id: session[:user_id] ) 
 		convo = Conversation.find_by(id: params[:to_id])

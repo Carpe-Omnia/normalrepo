@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   post '/messages', to: 'messages#create' 
   get '/inbox', to: 'messages#inbox' 
   
-  get '/reply', to: 'messages#reply' 
+ # get '/reply', to: 'messages#reply' 
   post '/reply', to: 'messages#sendreply' 
   
 end
