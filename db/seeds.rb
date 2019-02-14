@@ -20,3 +20,22 @@ everlast.save
 gang = Joke.create(setup: "La Cosa Nostra", punchline: "Yeah I'm affiliated with that gang") 
 gang.author = george 
 gang.save 
+
+convo1 = Conversation.new 
+convo1.inboxes << box1 
+convo1.inboxes << box2 
+convo1.save 
+
+mess1 = Message.new 
+mess1.conversation_id = convo1.id 
+mess1.from_id = george.id 
+mess1.to_id = tom.id 
+mess1.subject = "This is a test message" 
+mess1.content = "This is the content of the test message" 
+
+mess1.save 
+
+convo1.messages << mess1 
+
+convo1.save 
+

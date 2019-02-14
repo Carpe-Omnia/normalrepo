@@ -1,4 +1,5 @@
 class Inbox < ApplicationRecord 
-	has_many :messages, :foreign_key => 'to_id'
 	belongs_to :user 
+	has_and_belongs_to_many :conversations 
+	
 end 

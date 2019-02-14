@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post '/login', to: 'users#authorize' 
   post '/users', to: 'users#create'
   get '/users/:id', to: 'users#show'
+  get '/profile', to: 'users#profile' 
+  
   get '/logout', to: 'users#logout' 
   
   get '/jokes', to: 'jokes#index'
@@ -22,5 +24,8 @@ Rails.application.routes.draw do
   get '/messages', to: 'jokes#index'
   post '/messages', to: 'messages#create' 
   get '/inbox', to: 'messages#inbox' 
+  
+  get '/reply', to: 'messages#reply' 
+  post '/reply', to: 'messages#sendreply' 
   
 end

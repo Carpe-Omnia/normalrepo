@@ -20,6 +20,10 @@ class UsersController < ApplicationController
 		@user = User.find_by(id: params[:id]) 
 		@user.bio == nil ? @bio = Bio.new(user_id: @user.id) : @bio = @user.bio	
 	end 
+	def profile
+		@user = User.find_by(id: session[:user_id]) 
+		render "show" 
+	end 	
 	
 	def login 
 		@message = ""

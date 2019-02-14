@@ -1,10 +1,23 @@
-Inbox 
-<ul>
-<% @inbox.messages.each do |message| %> 
-<li>
-<%= message.subject %> 
-<%= message.content %> 
-from --- 
-<%= message.sender.name %> 
-</li>
+<h1> Inbox </h1> 
+
+<% @inbox.conversations.each do |conversation| %> 
+	<ul>
+	<% conversation.messages.each do |message| %>
+		
+		<li>
+		<h5> <%= message.subject %> </h5> 
+		<h6> <%= message.content %> </h6>
+		from --- 
+		<%= message.sender.name %> 
+		</li>
+	<% end %> 
+	</ul> 
+	
+		<form action="/reply" method="get" >
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<input type="hidden" name="to" value="<%=conversation.id%>" > 
+			<input type="submit" value="reply to this conversation" > 
+		</form>
+		
 <% end %> 
+	
