@@ -28,5 +28,6 @@ Rails.application.routes.draw do
   
  # get '/reply', to: 'messages#reply' 
   post '/reply', to: 'messages#sendreply' 
+  post '/conversation', to: 'messages#conversation' 
   
 end

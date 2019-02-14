@@ -1,0 +1,41 @@
+	<ul>
+	<% @conversation.messages.order("created_at DESC").each do |message| %> 	
+		<li>
+		<h5> <%= message.subject %> </h5> 
+		<h6> <%= message.content %> </h6>
+		
+		<%= "- #{message.sender.name} ( #{message.created_at.localtime.strftime("%R %F")} )" %> 
+		</li>
+	<% end %> 
+	</ul> 
+		
+	<form action="/reply" method="post" style="display: none" id="hidden-form"> 
+			<input type="text" name="subject"><br>
+			<input type="text" name="content"><br>
+			<input type="hidden" name="to_id" value="<%=@conversation.id%>">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<input type="submit" value="send reply">	
+		</form>
+		
+		
+		<button id="buttonA" class="hide-form" onclick="tog_form()" >Never Mind</button>
+		<button id="buttonB" class="vis-form" onclick="tog_form()" >Reply</button>
+		
+		</form>
+
+
+
+
+<script>
+function tog_form() {
+if (document.getElementById("hidden-form").style.display  == 'none') 
+{document.getElementById("hidden-form").style.display  = 'block' ; 
+document.getElementById(`buttonA`).style.display = 'block' ;
+document.getElementById(`buttonB`).style.display = 'none' }
+
+else 
+{document.getElementById("hidden-form").style.display  = 'none' ;
+document.getElementById(`buttonA`).style.display = 'none' ;
+document.getElementById(`buttonB`).style.display = 'block' ; } 
+} 
+</script>

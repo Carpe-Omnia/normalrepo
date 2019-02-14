@@ -30,4 +30,9 @@ class MessagesController < ApplicationController
 		@message = Message.create(from_id: session[:user_id], subject: params[:subject], content: params[:content], conversation_id: convo.id ) 
 		redirect_to '/inbox' 
 	end 
+	
+	def conversation 
+		@conversation = Conversation.find_by(id: params[:convo_id]) 
+	end 
+	
 end 

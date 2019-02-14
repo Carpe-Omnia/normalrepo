@@ -1,7 +1,7 @@
 class JokesController < ApplicationController 
 	def index
 		@message = ""
-		@jokes = Joke.all 
+		@jokes = Joke.all.reverse 
 	end
 	def new 
 		if session[:user_id] != nil
