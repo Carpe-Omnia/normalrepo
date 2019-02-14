@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 	end 
 	def profile
 		@user = User.find_by(id: session[:user_id]) 
-		render "show" 
+		redirect_to user_path(@user) 
 	end 	
 	
 	def login 
