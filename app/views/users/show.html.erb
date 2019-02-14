@@ -16,12 +16,17 @@ Karma: <%= @user.karma %>
 	<% end %> 
 <% else %>
 	<% if session[:user_id] != nil %>
-		<form action="/messages/new" method="get" >
+		<form action="/messages" method="post" id="hidden-form" style="display: none" >
 		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-		<input type="hidden" name="to" value="<%=@user.id%>" > 
-		<input type="submit" value="message this user" > 
-		</form>
-		<br>
+		<input type="hidden" name="to_id" value="<%=@user.id%>" > 
+		Title:    
+		<input type="text" name="subject"><br>
+		Content:
+		<input type="text" name="content"><br>
+		<input type="submit" value="send message" > 
+		</form> 
+		<button id="buttonA" class="hide-form" onclick="tog_form()" > Never mind </button>
+		<button id="buttonB" class="vis-form" onclick="tog_form()" > Message this user </button>
 		<% if !!@confirmation %> 
 			<h3> <%= @confirmation %> </h3>
 		<% end %> 	
@@ -35,4 +40,16 @@ Karma: <%= @user.karma %>
 	<% end %> 	
 <% end %> 
 	
+<script>
+function tog_form() {
+if (document.getElementById("hidden-form").style.display  == 'none') 
+{document.getElementById("hidden-form").style.display  = 'block' ; 
+document.getElementById(`buttonA`).style.display = 'block' ;
+document.getElementById(`buttonB`).style.display = 'none' }
 
+else 
+{document.getElementById("hidden-form").style.display  = 'none' ;
+document.getElementById(`buttonA`).style.display = 'none' ;
+document.getElementById(`buttonB`).style.display = 'block' ; } 
+} 
+</script>
