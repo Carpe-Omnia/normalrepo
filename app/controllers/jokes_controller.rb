@@ -18,7 +18,7 @@ class JokesController < ApplicationController
 	def create 
 		@joke = Joke.new(joke_params(:setup, :punchline)) 
 		@user = User.find_by(id: session[:user_id]) 
-		if @joke.update(author_id: @user.id, karma: 0)  
+		if @joke.update(author_id: @user.id, karma: 0, user_name: @user.name)  
 			@message = "Your joke has been created" 
 			@jokes = Joke.all 
 			render "index"
