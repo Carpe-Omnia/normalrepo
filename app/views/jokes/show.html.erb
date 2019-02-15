@@ -31,7 +31,7 @@
 
 <% if session[:user_id] != nil %> 
 	<form action=" <%= "/jokes/#{@joke.id}" %> " method="post" >
-		<input type="text" name="content" placeholder="leave a comment" size="50" >
+		<input type="text" name="content" placeholder="leave a comment" size="25" ><br>
 		<input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"  >
 		<input type="hidden" name="joke" value="<%=@joke.id%>" >
 		<input type="submit" value="save comment" > 

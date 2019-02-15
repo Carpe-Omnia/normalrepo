@@ -8,7 +8,7 @@
 		<h5> <%= message.subject %> </h5> 
 		<h6> <%= message.content %> </h6>
 		
-		<%= "- #{message.sender.name} ( #{message.created_at.localtime.strftime("%R %F")} )" %> 
+		<%= "- #{message.user_name} ( #{message.created_at.localtime.strftime("%R %F")} )" %> 
 		</li>
 	<% end %> 
 	</ul> 
