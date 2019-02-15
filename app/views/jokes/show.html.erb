@@ -1,0 +1,51 @@
+
+
+<div class="joke">
+
+	<div class="setup" onclick="revealPunchline()">
+		<%= @joke.setup %> 
+	</div>
+	
+	<div class="placeholder" id="placeholder" onclick="revealPunchline()">
+		-------------
+	</div>
+	
+	<div class="punchline" id="punchline" >
+		<%= @joke.punchline %> 
+	</div>	
+	-By 
+	<a href="<%=user_path(@joke.author)%>" >
+		<%= @joke.author.name %> 
+	</a>
+	
+</div> 
+
+
+<script>
+	function revealPunchline() {
+		document.getElementById(`placeholder`).style.display = "none" ;
+		document.getElementById(`punchline`).style.display = "block" ;
+	}
+</script>
+
+<form action=" <%= "/jokes/#{@joke.id}" %> " method="post" >
+	<input type="text" name="content" placeholder="leave a comment" size="50" >
+	<input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"  >
+	<input type="hidden" name="joke" value="<%=@joke.id%>" >
+</form>
+
+<div id="comment-section">
+	<br>
+	<ul>
+		<% @joke.joke_comments.each do |comment| %> 
+			<li>
+				( <%= comment.karma %> )
+				<%= comment.content %> <br>
+				- 
+				<a href="<%=user_path(comment.user)%>" >
+				<%= comment.user_name %> 
+				</a>
+			</li>
+		<% end %> 
+	</ul>	
+</div>

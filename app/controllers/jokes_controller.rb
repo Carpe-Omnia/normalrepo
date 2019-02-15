@@ -1,8 +1,10 @@
 class JokesController < ApplicationController 
+
 	def index
 		@message = ""
 		@jokes = Joke.all.reverse 
 	end
+	
 	def new 
 		if session[:user_id] != nil
 			@joke = Joke.new 
@@ -23,6 +25,19 @@ class JokesController < ApplicationController
 		else 
 			render "new" 
 		end 	
+	end 
+	
+	def show 
+		@joke = Joke.find_by(id: params[:id]) 
+	end 
+	
+	def comment 
+		@joke = Joke.find_by(id: params[:joke])
+		@user = User.find_by(id: session[:user_id]) 
+		@comment = JokeComment.new(joke_id: @joke.id, user_id: @user.id, user_name: @user.name, content: params[:content], karma: 0) 
+		@joke.joke_comments << @comment 
+		@comment.save 
+		redirect_to "/jokes/#{@joke.id}"  
 	end 
 	
 	private 
