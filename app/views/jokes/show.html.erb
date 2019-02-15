@@ -17,7 +17,8 @@
 	<a href="<%=user_path(@joke.author)%>" >
 		<%= @joke.author.name %> 
 	</a>
-	
+	<br>
+	<br>
 </div> 
 
 
@@ -28,11 +29,14 @@
 	}
 </script>
 
-<form action=" <%= "/jokes/#{@joke.id}" %> " method="post" >
-	<input type="text" name="content" placeholder="leave a comment" size="50" >
-	<input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"  >
-	<input type="hidden" name="joke" value="<%=@joke.id%>" >
-</form>
+<% if session[:user_id] != nil %> 
+	<form action=" <%= "/jokes/#{@joke.id}" %> " method="post" >
+		<input type="text" name="content" placeholder="leave a comment" size="50" >
+		<input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"  >
+		<input type="hidden" name="joke" value="<%=@joke.id%>" >
+		<input type="submit" value="save comment" > 
+	</form>
+<% end %> 
 
 <div id="comment-section">
 	<br>
