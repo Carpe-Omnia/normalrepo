@@ -1,20 +1,19 @@
-<h3> This is the homepage for gaysex.biz </h3> 
+<h3> This is the homepage for gaysex.biz </h3>
 <% if !!session[:user_id]  %>
-	<% @current_user = User.find_by(id: session[:user_id]) %> 
+	<% @current_user = User.find_by(id: session[:user_id]) %>
 	<% if !!@current_user %>
-		<%= "Greetings #{@current_user.name}." %> 
-	<% else %> 
-		<% session.clear %> 
-	<% end %> 	
-<% end %> 
-<h1> Hey Jen </h1> 
-<h1 id="jenholder" onclick="fuck_jen()"> -------- </h1>
-<h1 id="jenline" style="display: none">Fuck you and your pistachios </h1> 
+		<%= "Greetings #{@current_user.name}." %>
+	<% else %>
+		<% session.clear %>
+	<% end %>
+<% end %>
+<h1> R.I.P </h1>
+<h1 id="jerholder" onclick="rip_jer()"> -------- </h1>
+<h1 id="jerline" style="display: none">Jeremy Peterson</h1>
 
-<script> 
-	function fuck_jen() { 
-	document.getElementById("jenholder").style.display = "none" ;
-	document.getElementById("jenline").style.display = "block" ;
+<script>
+	function rip_jer() {
+	document.getElementById("jerholder").style.display = "none" ;
+	document.getElementById("jerline").style.display = "block" ;
 	}
-</script>	
-
+</script>

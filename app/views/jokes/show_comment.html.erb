@@ -1,0 +1,8 @@
+<li>
+  ( <%= @comment.karma %> )
+  <%= @comment.content %> <br>
+  -
+  <a href="<%=user_path(@comment.user)%>" >
+  <%= @comment.user_name %>
+  </a>
+</li>

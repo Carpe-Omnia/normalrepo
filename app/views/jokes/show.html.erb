@@ -3,53 +3,84 @@
 <div class="joke">
 
 	<div class="setup" onclick="revealPunchline()">
-		<%= @joke.setup %> 
+		<%= @joke.setup %>
 	</div>
-	
+
 	<div class="placeholder" id="placeholder" onclick="revealPunchline()">
 		-------------
 	</div>
-	
+
 	<div class="punchline" id="punchline" >
-		<%= @joke.punchline %> 
-	</div>	
-	-By 
+		<%= @joke.punchline %>
+	</div>
+	-By
 	<a href="<%=user_path(@joke.author)%>" >
-		<%= @joke.author.name %> 
+		<%= @joke.author.name %>
 	</a>
 	<br>
 	<br>
-</div> 
+</div>
 
+
+
+
+<% if session[:user_id] != nil %>
+	<form action=" <%= "/jokes/#{@joke.id}" %> " method="post" id="leave_comment">
+		<input type="text" name="content" placeholder="leave a comment" size="25" id="new_comment_text"><br>
+		<input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"  id="new_comment_token">
+		<input type="hidden" name="joke" value="<%=@joke.id%>" id="joke_id">
+		<input type="submit" value="save comment" >
+	</form>
+<% end %>
+
+
+
+<div id="comment-section">
+	<br>
+	<ul>
+		<div id="current_comments" >
+		<% @joke.joke_comments.each do |comment| %>
+			<li>
+				( <%= comment.karma %> )
+				<%= comment.content %> <br>
+				-
+				<a href="<%=user_path(comment.user)%>" >
+				<%= comment.user_name %>
+				</a>
+			</li>
+		<% end %>
+		</div>
+	</ul>
+</div>
 
 <script>
 	function revealPunchline() {
 		document.getElementById(`placeholder`).style.display = "none" ;
 		document.getElementById(`punchline`).style.display = "block" ;
 	}
+
+	$(function(){
+		$('#leave_comment').on("submit", function(e){
+			e.preventDefault() ;
+			url = this.action ;
+			data = {
+				'authenticity_token': $('#new_comment_token').val() ,
+				'content': $('#new_comment_text').val() ,
+				'joke': $('#joke_id').val()
+			}
+			$.ajax({
+				type: "POST",
+				url: url,
+				data: data,
+				success: function(response) {
+					$('#new_comment_content').val("");
+					var $old = $('#current_comments')
+					console.log("something worked")
+					console.log(response)
+					$old.prepend(response) ; 
+				}
+			})
+		})
+	})
+
 </script>
-
-<% if session[:user_id] != nil %> 
-	<form action=" <%= "/jokes/#{@joke.id}" %> " method="post" >
-		<input type="text" name="content" placeholder="leave a comment" size="25" ><br>
-		<input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"  >
-		<input type="hidden" name="joke" value="<%=@joke.id%>" >
-		<input type="submit" value="save comment" > 
-	</form>
-<% end %> 
-
-<div id="comment-section">
-	<br>
-	<ul>
-		<% @joke.joke_comments.each do |comment| %> 
-			<li>
-				( <%= comment.karma %> )
-				<%= comment.content %> <br>
-				- 
-				<a href="<%=user_path(comment.user)%>" >
-				<%= comment.user_name %> 
-				</a>
-			</li>
-		<% end %> 
-	</ul>	
-</div>
