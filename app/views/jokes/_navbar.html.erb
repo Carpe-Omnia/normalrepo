@@ -1,16 +1,16 @@
 <ul class="navbar-nav mr-auto mt-2">
 <li> <a class="nav-link" href="/" > Home </a> </li>
 <span class="spacer" >----</span>
-<% if session[:user_id] == nil %> 
+<% if session[:user_id] == nil %>
 	<li> <a class="nav-link" href="/login" > Login </a> </li>
 	<span class="spacer" >----</span>
 	<li> <a class="nav-link" href="/register" > Register </a> </li>
-<% else %> 	
+<% else %>
 	<li> <a class="nav-link" href="/logout" > Logout </a> </li>
 	<span class="spacer" >----</span>
 	<li> <a class="nav-link" href="/inbox" > Inbox </a> </li>
 	<li> <a  class="nav-link" href="/profile" > Profile </a> </li>
-<% end %> 	
+<% end %>
 <span class="spacer" >----</span>
 <li> <a class="nav-link" href="/jokes" > Jokes </a> </li>
 <span class="spacer" >----</span>
@@ -18,4 +18,5 @@
 <span class="spacer" >----</span>
 <li> <a class="nav-link" href="/founder" > Founder </a> </li>
 <br>
-</ul> 
+<li> <a class="nav-link" href="/sample" > Sample </a> </li> 
+</ul>

@@ -1,0 +1,16 @@
+
+@keyframes background-shift {
+	0%   {background-color: Linen ;}
+    50%  {background-color: LightSteelBlue;}
+    100% {background-color: Plum;}	
+}
+@keyframes outline-shift {
+	0%   {outline: 2px solid Linen ;}
+    50%  {outline: 2px solid LightSteelBlue ;}
+    100% {outline: 2px solid Plum ;}	
+}
+@keyframes outline-background-shift {
+	0%   {background-color: Linen ; outline: 2px solid Linen ;}
+    50%  {background-color: LightSteelBlue; outline: 2px solid LightSteelBlue ;}
+    100% {background-color: Plum; outline: 2px solid Plum ;}	
+}

@@ -1,7 +1,8 @@
 class GaysexController < ApplicationController
-	def homepage 
+	def homepage
+	end
+	def founder
+	end
+	def testing
 	end 	
-	def founder 
-	end 
-	
 end

@@ -1,0 +1,74 @@
+#barset2 {
+	position: absolute ;
+	top: 50% ;
+	left: 1% ;
+	height: 50% ;
+	width: 100% ;
+	z-index: 1 ;
+	overflow: hidden ;
+	background-color: black ;
+	animation-name: background-shift ;
+	animation-duration: var(--animation-dur) ;
+	animation-iteration-count: infinite ;
+	animation-direction: alternate ;
+	animation-timing-function: linear ;
+}
+.barset2 {
+	z-index: -1 ;
+	transform: rotate(-10deg) ;
+	height: var(--bar-height) ;
+	width: calc(var(--bar-width) + 1% );
+	position: absolute ;
+	top: -15% ;
+	animation-name: outline-shift ;
+	animation-duration: var(--animation-dur) ;
+	animation-iteration-count: infinite ;
+	animation-direction: alternate ;
+	animation-timing-function: linear ;
+
+}
+
+#first-bar2 {
+	background-color: var(--sixth-bar-color);
+	left: 2% ;
+	z-index: -6 ;
+}
+#second-bar2 {
+	z-index: -5 ;
+	background-color: var(--fifth-bar-color);
+	left: calc(var(--bar-width) + 2.2% );
+}
+#third-bar2{
+	z-index: -4 ;
+	background-color: var(--fourth-bar-color);
+	left: calc(var(--bar-width) * 2 + 2.2%)
+}
+#fourth-bar2{
+	z-index: -3 ;
+	background-color: var(--third-bar-color);
+	left: calc(var(--bar-width) * 3 + 2.2%)
+}
+#fifth-bar2{
+	z-index: -2 ;
+	background-color: var(--second-bar-color);
+	left: calc(var(--bar-width) * 4 + 2.2%)
+}
+#sixth-bar2{
+	z-index: -1 ;
+	background-color: var(--first-bar-color);
+	left: calc(var(--bar-width) * 5 + 2.2%)
+}
+#seventh-bar2 {
+	z-index: 0 ;
+	width: 10% ;
+	position: absolute ;
+	left: calc(var(--bar-width) * 6 + 2.2%) ;
+	top: -15% ;
+	transform: rotate(-10deg) ;
+	height: var(--bar-height) ;
+	animation-name: background-shift ;
+	animation-duration: var(--animation-dur) ;
+	animation-iteration-count: infinite ;
+	animation-direction: alternate ;
+	animation-timing-function: linear ;
+}

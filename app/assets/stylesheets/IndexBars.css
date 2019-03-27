@@ -1,0 +1,119 @@
+#barsets {
+	position: absolute ;
+	top: 13% ;
+	z-index: 1 ;
+	height: 55% ;
+	width: calc(var(--center-width) - 1% ) ;
+	left: calc(50.5% - var(--center-width)/ 2 ) ;
+	animation-name: outline-background-shift ;
+	animation-duration: var(--animation-dur) ;
+	animation-iteration-count: infinite ;
+	animation-direction: alternate ;
+	animation-timing-function: linear ;
+	overflow: hidden ;
+
+}
+#barset1 {
+	position: absolute;
+	top: 0% ;
+	left: 1% ;
+	height: 50% ;
+	width: 100% ;
+	z-index: 1 ;
+	overflow: hidden ;
+	animation-name: background-shift ;
+	animation-duration: var(--animation-dur) ;
+	animation-iteration-count: infinite ;
+	animation-direction: alternate ;
+	animation-timing-function: linear ;
+}
+/*
+.barset1 {
+	z-index: -1 ;
+	transform: rotate(10deg) ;
+	height: var(--bar-height) ;
+	width: var(--bar-width);
+	position: absolute ;
+	top: -15% ;
+	opacity: 1 ;
+	color: black ;
+	text-align: center ;
+	background-size: cover ;
+	animation-name: outline-shift ;
+	animation-duration: var(--animation-dur) ;
+	animation-iteration-count: infinite ;
+	animation-direction: alternate ;
+	animation-timing-function: linear ;
+}
+*/
+.bartext {
+	transform: rotate(-10deg) ;
+	font-family: Georgia ;
+	font-size: 0.8em ;
+	margin: 0 auto ;
+	position: absolute ;
+	top: 30% ;
+	left: 20% ;
+
+
+}
+.bartext :hover {
+	font-size: 1.2em ;
+}
+.bartext :link, .bartext :visited {
+	opacity: 0.8 ;
+	color: white ;
+	text-shadow:
+	-1px -1px 0 #000,
+	1px -1px 0 #000,
+	-1px 1px 0 #000,
+	1px 1px 0 #000;
+
+}
+
+/*
+#first-bar {
+	background-color: var(--first-bar-color);
+	left: 1.5% ;
+	z-index: -6 ;
+	background-image: url("Color-Theory.jpg") ;
+
+}
+
+#second-bar {
+	z-index: -2 ;
+	background-color: var(--second-bar-color);
+	left: calc(var(--bar-width) + 0.5% );
+	background-image: url("Paris.jpg")
+
+}
+
+#third-bar{
+	z-index: -3 ;
+	background-color: var(--third-bar-color);
+	left: calc(var(--bar-width) * 2 + 0.7%) ;
+	background-image: url("Fuji.jpg") ;
+	position: relative ;
+}
+
+
+#fourth-bar{
+	z-index: -4 ;
+	background-color: var(--fourth-bar-color) ;
+	left: calc(var(--bar-width) * 3 + 0.9%) ;
+	background-image: url("Mountain.jpg") ;
+}
+
+#fifth-bar{
+	z-index: -5 ;
+	background-color: var(--fifth-bar-color) ;
+	left: calc(var(--bar-width) * 4 + 1.1%) ;
+	background-image: url("Glitch.jpg") ;
+}
+#sixth-bar{
+	z-index: -6 ;
+	background-color: var(--sixth-bar-color);
+	left: calc(var(--bar-width) * 5 + 1.4%) ;
+	background-image: url("Street.jpg") ;
+}
+*/
