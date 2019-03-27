@@ -74,10 +74,8 @@
 				data: data,
 				success: function(response) {
 					$('#new_comment_content').val("");
-					var $old = $('#current_comments')
-					console.log("something worked")
-					console.log(response)
-					$old.prepend(response) ; 
+					var $old = $('#current_comments') ;
+					$old.prepend(response) ;
 				}
 			})
 		})
