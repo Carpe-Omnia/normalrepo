@@ -1,50 +1,75 @@
-<h1> Inbox </h1> 
+<h1> Inbox </h1>
 
-<% @inbox.conversations.order("updated_at DESC").each do |conversation| %> 
-	<ul>
-	<% conversation.messages.size > 5 ? preview = conversation.messages.order("created_at DESC")[0..4] : preview = conversation.messages.order("created_at DESC") %> 
-	<% preview.each do |message| %> 	
+<% @inbox.conversations.order("updated_at DESC").each do |conversation| %>
+	<ul id="convo-<%=conversation.id%>">
+	<% conversation.messages.size > 5 ? preview = conversation.messages.order("created_at DESC")[0..4] : preview = conversation.messages.order("created_at DESC") %>
+	<% preview.each do |message| %>
 		<li>
-		<h5> <%= message.subject %> </h5> 
+		<h5> <%= message.subject %> </h5>
 		<h6> <%= message.content %> </h6>
-		
-		<%= "- #{message.user_name} ( #{message.created_at.localtime.strftime("%R %F")} )" %> 
+
+		<%= "- #{message.user_name} ( #{message.created_at.localtime.strftime("%R %F")} )" %>
 		</li>
-	<% end %> 
-	</ul> 
-		
-		<form action="/reply" method="post" style="display: none" id="<%=conversation.id%>"> 
+	<% end %>
+	</ul>
+
+		<form action="/reply" method="post" style="display: none" id="<%=conversation.id%>">
 			<input type="text" name="subject"><br>
 			<input type="text" name="content"><br>
 			<input type="hidden" name="to_id" value="<%=conversation.id%>">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-			<input type="submit" value="send reply">	
+			<input type="submit" value="send reply">
 		</form>
-		
-		
+
+
 		<button id="<%="ba#{conversation.id}"%>" class="hide-form" onclick="toggle_form(<%=conversation.id%>)" >Never Mind</button>
 		<button id="<%="bb#{conversation.id}"%>" class="vis-form" onclick="toggle_form(<%=conversation.id%>)" >Reply</button>
-		
+
 		<form action="/conversation" method="post" id="<%="bc#{conversation.id}"%>" style="display: inline" >
-		<input type="hidden" name="convo_id" value="<%=conversation.id%>" > 
+		<input type="hidden" name="convo_id" value="<%=conversation.id%>" >
 		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 		<input type="submit" value="show conversation" >
 		</form>
-<% end %> 
-	
-	
-	
-<script>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
 function toggle_form(id) {
 if (document.getElementById(id).style.display  == 'none') {
-document.getElementById(id).style.display  = 'block' ; 
+document.getElementById(id).style.display  = 'block' ;
 document.getElementById(`ba${id}`).style.display = 'inline' ;
 document.getElementById(`bb${id}`).style.display = 'none' ;
 document.getElementById(`bc${id}`).style.display = 'none' ;}
 else {
 document.getElementById(id).style.display  = 'none' ;
 document.getElementById(`ba${id}`).style.display = 'none' ;
-document.getElementById(`bb${id}`).style.display = 'inline' ; 
-document.getElementById(`bc${id}`).style.display = 'inline' ;} 
-} 
+document.getElementById(`bb${id}`).style.display = 'inline' ;
+document.getElementById(`bc${id}`).style.display = 'inline' ;}
+}
+$(function(){
+	$('form').submit(function(event){
+		if ($(this)[0].length == 3){
+			
+		}
+		else {
+			event.preventDefault();
+			var values = $(this).serialize();
+			var posting = $.post('/reply', values);
+			posting.done(function(data){
+				var message = data ;
+				var messageText = `<li> <h5> ${message.subject}</h5><h6> ${message.content}</h6> -${message.user_name} (just now) </li>`
+				$(`#convo-${message.conversation_id}`).prepend(messageText) ;
+			})
+		}
+	})
+})
 </script>
